@@ -1,0 +1,86 @@
+---
+- hosts: all
+  tasks:
+    - name: install necessary packages
+      become: yes
+      pacman:
+        name: ruby, git, openssl, base-devel, fcron
+
+    - name: install bundler
+      become: yes
+      gem:
+        name: bundler
+        user_install: no
+
+    - name: ensure http group
+      become: yes
+      group:
+        name: http
+        gid: 80
+
+    - name: ensure http user
+      become: yes
+      user:
+        name: http
+        uid: 80
+        group: http
+        home: /srv/http
+        append: true
+
+    - name: ensure server path
+      become: yes
+      file:
+        state: directory
+        path: /srv/http/
+        owner: http
+        group: http
+        mode: u+rwx,g+rwx,o+rx
+
+    - name: clone slide repo
+      become: yes
+      become_method: sudo
+      become_user: http
+      git:
+        repo: https://github.com/skoenen/ci_2.04_programming
+        dest: /srv/http/htdocs
+
+    - name: install server dependencies
+      become: yes
+      become_method: sudo
+      become_user: http
+      bundler:
+        chdir: /srv/http/htdocs
+        deployment_mode: yes
+      environment:
+        PATH: "/usr/lib/ruby/gems/2.6.0/bin:{{ansible_env.PATH}}"
+
+    - name: ensure service definition
+      become: yes
+      copy:
+        src: /srv/http/htdocs/vagrant/slideserver/templates/rack_service.service
+        dest: /usr/lib/systemd/system/slideserver.service
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: start slide server
+      become: yes
+      become_method: sudo
+
+      systemd:
+        enabled: yes
+        name: slideserver.service
+        state: restarted
+        daemon_reload: yes
+
+    - name: enable update of repo
+      become: yes
+      become_method: sudo
+      become_user: http
+
+      cron:
+        weekday: 5
+        minute: 23
+        hour: 13
+        job: '/srv/http/htdocs/vagrant/scripts/update_repo.sh'
+

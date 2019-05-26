@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+    - name: update system => needs manual reboot
+      become: yes
+      pacman:
+        update-cache: yes
+        upgrade: yes
+
+    - name: install necessary packages
+      become: yes
+      pacman:
+        name: clang, base-devel, jdk-openjdk, jre-openjdk-headless, git
+

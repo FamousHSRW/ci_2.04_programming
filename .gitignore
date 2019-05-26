@@ -23,6 +23,9 @@ erl_crash.dump
 programming-*.tar
 
 vendor/
+.bundle/
+
+.vagrant
 
 build/
 .gradle/

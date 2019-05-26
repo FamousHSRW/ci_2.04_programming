@@ -4,6 +4,11 @@ This guide is meant for those who have access to a Linux CLI either on
 arch-linux on virtual box, ubuntu cli for windows or dual boot windows/linux
 system.
 
+There are two ways now to have a running slide server:
+
+1. Follow the instructions below
+2. Use Vagrant [Vagrant Based Instructions](Vagrant_SlideServer_Instructions.md)
+
 ## Get the slide contents
 
 Also this guide assumes you must have a
@@ -112,6 +117,18 @@ To let the server run on standard HTTP Port. And then use
 or
 
 `http://<IP ADDRESS>`
+
+## Printing slides.
+
+You are now able to print a pdf out of the slides.
+Use _Chrome_ or _Chromium_ and go to:
+
+- For Lecture:
+    [http://localhost:4567/lecture?print-pdf](http://localhost:4567/lecture?print-pdf)
+- For Lab/Practica:
+    [http://localhost:4567/practica?print-pdf](http://localhost:4567/practica?print-pdf)
+
+And after that use the printing function of the browser either to paper or pdf.
 
 # Reading slides without server
 
