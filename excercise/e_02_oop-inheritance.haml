@@ -1,0 +1,132 @@
+%section
+  %section
+    :markdown
+      # Excercise 02
+  %section
+    :markdown
+      ## Inheritance
+
+      Purpose:
+
+      Learn the usage, advantage and disadvantage of inheritance in
+      object-oriented programming languages
+
+  %section
+    :markdown
+      ## Prerequisite Tasks
+
+      1. Have sheets of paper
+      2. Have pen/pencil/rolerball
+      3. `Optional`: Have a ruler
+
+  %section
+    :markdown
+      ## Additional Information
+
+      Make use of non-standard UML-like shapes (UML = Unified Modeling Language)
+
+    %img{ src: url("/graph/excercise/e_02/non_uml_simple.svg") }
+
+%section
+  %section
+    :markdown
+      ## Task A
+
+      _Consider **single** inheritance_
+
+      Draw the class hierarchy of zoo animals:
+
+      | Elefant | Dog     |
+      | Lion    | Wolf    |
+      | Penguin | Canary  |
+      | Pidgeon | Owl     |
+
+  %section
+    :markdown
+      ### Task A | Requirements
+
+      - All are `Animals`
+      - Some are `Wild`
+      - Some are `Pets`
+
+%section
+  %section
+    :markdown
+      ## Task B
+
+      Consider class structure of `Task A`
+
+      1. Denote a method to apporiate classes, that return a text, denoting what
+          kind they are.
+
+
+%section
+  %section
+    :markdown
+      ## Task C
+
+      Consider class structure of `Task A`
+
+      1. Each animal has an attribute denoting its life environment.
+
+      - _Hint:_ Environment classes, _structured data/package_
+      - _Hint:_ Private attributes are not accessible by sub classes
+      - _Hint:_ Protected attributes are like private but accessible by sub classes
+
+  %section
+    :markdown
+      ### Task C | Life Environments
+
+      | House | Cage |
+      | Zoo | Thundra |
+      | Air
+
+
+  %section
+    :markdown
+      ### Task C | LE | Types
+
+      - Closed
+      - Landscape
+      - WildEnvironment
+
+  %section
+    :markdown
+      ### Task C | Method
+
+      1. Model in __Multiple Inheritance__
+      2. Transform to __Single Inheritance__
+
+%section
+  %section
+    :markdown
+      ## Task D
+
+      We want to characterize
+
+      1. Predator
+      2. Prey
+
+      _Hint:_ Introduce intermediate classes where necessary
+      _Hint:_ Introduce _attributes_ where necessary
+
+  %section
+    :markdown
+      ### Task D | Requirements
+
+      1. A `Predator` cannot be _prey_
+      2. A `Predator` is (or)
+          - `Wild`
+          - `Pet`
+      3. A `Prey` is (or)
+          - `Wild`
+          - `Pet`
+
+%section
+  %section
+    :markdown
+      ## Task E
+
+      Introduce the `Human` into the hierarchy.
+
+
